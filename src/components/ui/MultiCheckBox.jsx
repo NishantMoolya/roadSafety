@@ -1,6 +1,6 @@
 "use client"
 import React, { useState } from 'react';
-import CheckboxField from './CheckboxField'; // Adjust import path as necessary
+import CheckboxField from './CheckBoxField'; // Adjust import path as necessary
 import { Label } from "@/components/ui/label"
 
 const MultiCheckbox = ({ options,label,onChange=()=>{} }) => {
