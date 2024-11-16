@@ -1,47 +1,28 @@
-"use client"
+import React from 'react'
+import { DateTimePicker } from '../ui/DateTimePicker'
+import SelectBox from '../ui/SelectBox';
+import { Label } from '../ui/label';
 
-import React, { useState } from 'react'
-import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from "@/components/ui/select"
-import { Label } from "@/components/ui/label"
-// import { DateTimePicker } from '@/components/ui/datetime-picker';
-
-const DateForm = () => {
-    const selectOptions = [{
-        label: "Yes",
-        value: "yes"
-    },
-    {
-        label: "No",
-        value: "no"
-    }];
-
-    const [date12, setDate12] = useState(null);
+const DateForm = ({ holiday,handleInput = () => { } }) => {
+    const holidayOptions = [
+        { value: "yes", label: "Yes" },
+        { value: "no", label: "No" }
+    ];
 
   return (
-    <div className='px-1 py-2 flex items-center gap-2 flex-wrap'>
-        <div className="grid w-full max-w-sm items-center gap-1.5">
-                <Label htmlFor="state">Holiday</Label>
-                <Select>
-                    <SelectTrigger className="w-[180px]">
-                        <SelectValue placeholder="Theme" />
-                    </SelectTrigger>
-                    <SelectContent>
-                        {
-                            selectOptions.map((item, ind) => <SelectItem key={ind} value={item.value}>{item.label}</SelectItem>)
-                        }
-                    </SelectContent>
-                </Select>
-            </div>
-            <div className="flex w-72 flex-col gap-2">
-        <Label>12 Hour</Label>
-        {/* <DateTimePicker hourCycle={12} value={date12} onChange={setDate12} /> */}
+    <div className='px-1 py-2 flex flex-col gap-4 flex-wrap'>
+      <div className='flex flex-col gap-1 self-start'>
+        <Label htmlFor="dateTime">Date and Time</Label>
+        <DateTimePicker onChange={(val) => handleInput("dateTime", val)} />
       </div>
+        <SelectBox
+                label="Holiday" // Adding a label for the select box
+                options={holidayOptions}
+                onChange={(val) => handleInput("holiday", val)}
+                placeholder="Select an option"
+                multiple={false}
+                value={holiday}
+            />
     </div>
   )
 }
