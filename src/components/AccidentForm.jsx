@@ -67,6 +67,8 @@ const AccidentForm = () => {
 
   return (
     <div className='w-full sm:max-w-[800px] rounded-md shadow-md p-2'>
+      <p className='text-xl font-semibold capitalize text-slate-700'>Road Accident Form</p>
+      <p className='text-slate-700'>For no response write NIL</p>
         <FormAccordion label={'Identification Particulars'}>
             <IdentificationParticularsForm city={formData.identification.city} district={formData.identification.district} firNo={formData.identification.firNo} policeStation={formData.identification.policeStation} state={formData.identification.state} handleInput={handleIdentification} />
         </FormAccordion>
